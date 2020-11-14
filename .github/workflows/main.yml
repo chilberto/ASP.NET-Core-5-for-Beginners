@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0'
     - name: Publish app
       run: dotnet publish -c Release
       # You can use cd before if your project is in a subfolder
