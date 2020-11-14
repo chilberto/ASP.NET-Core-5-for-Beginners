@@ -16,13 +16,13 @@ jobs:
       with:
         dotnet-version: '5.0'
     - name: Publish app
-      run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'
-
-    - name: GitHub Pages
-      if: success()
-      uses: crazy-max/ghaction-github-pages@v1.5.1
+      run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'  
+    - uses: actions/checkout@v2
       with:
-        target_branch: gh-pages
-        build_dir: ${{ env.PUBLISH_DIR }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.PublishToken }}
+        ref: gh-pages
+    - name: new file
+      run: |
+          echo "Test push commit to the remote in the workflow" >> test.txt
+          git add -A
+          git commit -m "Update test.txt"
+          git push        
