@@ -17,13 +17,6 @@ jobs:
         dotnet-version: '5.0'
     - name: Publish app
       run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'
-      # You can use cd before if your project is in a subfolder
-
-    - name: Rewrite base href
-      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
-      with:
-        html_path: ${{ env.PUBLISH_DIR }}/index.html
-        base_href: /ASP.NET-Core-5-for-Beginners/
 
     - name: GitHub Pages
       if: success()
