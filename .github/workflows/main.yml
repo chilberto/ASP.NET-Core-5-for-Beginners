@@ -35,9 +35,9 @@ jobs:
       run: |
           git config --global user.name "Jeff Chilberto"
           git config --global user.email "chilberto@yahoo.com"
-                    
-          git checkout -b pages
-          git reset --hard origin/master
+          
+          git branch -D pages &>/dev/null 
+          git checkout -b pages          
     
     - name: clear
       continue-on-error: true
