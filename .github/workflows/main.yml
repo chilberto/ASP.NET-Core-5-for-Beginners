@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: '5.0'
     - name: Publish app
-      run: dotnet publish -c Release '~/Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'
+      run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'
       # You can use cd before if your project is in a subfolder
 
     - name: Rewrite base href
