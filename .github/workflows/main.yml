@@ -5,7 +5,8 @@ env:
 on:
   push:
     branches: [ master ]    
-#    paths: './Chapter 12/Chapter_12_GitHubActions_Examples/**'
+    paths: 
+#    - './Chapter 12/Chapter_12_GitHubActions_Examples/**'
 
 jobs:
   build:
@@ -35,9 +36,10 @@ jobs:
       run: |
           git config --global user.name "Jeff Chilberto"
           git config --global user.email "chilberto@yahoo.com"
-          
-          git branch -D pages &>/dev/null 
-          git checkout -b pages          
+                    
+          git checkout -B pages
+          git reset --hard origin/pages
+          git clean -d --force
     
     - name: clear
       continue-on-error: true
