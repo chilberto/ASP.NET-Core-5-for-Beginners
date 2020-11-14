@@ -4,7 +4,8 @@ env:
 
 on:
   push:
-    branches: [ master ]    
+    branches: [ master ]
+    paths: './Chapter 12/Chapter_12_GitHubActions_Examples'
 
 jobs:
   build:
@@ -49,5 +50,6 @@ jobs:
         
     - name: Commit changes
       run: | 
+          git add
           git commit -m "publishing WASM"         
           git push            
