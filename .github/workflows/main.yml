@@ -1,7 +1,7 @@
 name: DeployToGitHubPages
 env:
   PUBLISH_DIR: bin/Release/net5.0/browser-wasm/publish/wwwroot
-  # Include subfolders if needed
+  working-directory: './Chapter 12/Chapter_12_GitHubActions_Examples/'
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
         dotnet-version: '5.0'
     - name: Publish app
       run: dotnet publish -c Release
-      working-directory: ./Chapter12/Chapter_12_GitHubActions_Examples
+      working-directory: ${{env.working-directory}}
       # You can use cd before if your project is in a subfolder
 
     - name: Rewrite base href
