@@ -47,5 +47,6 @@ jobs:
         name: myWASM
         
     - name: Commit changes
-      run: |          
+      run: | 
+          git commit -m "publishing WASM"         
           git push            
