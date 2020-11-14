@@ -6,10 +6,13 @@ env:
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'Chapter 12'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
+          
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1
@@ -17,6 +20,7 @@ jobs:
         dotnet-version: '5.0'
     - name: Publish app
       run: dotnet publish -c Release
+      working-directory: ./Chapter12/Chapter_12_GitHubActions_Examples
       # You can use cd before if your project is in a subfolder
 
     - name: Rewrite base href
