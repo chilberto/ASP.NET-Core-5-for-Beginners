@@ -46,10 +46,6 @@ jobs:
       with:
         name: myWASM
         
-    - name: new file
-      run: |
-          echo "Test push commit to the remote in the workflow" >> test.txt
-                    
-          git add -A
-          git commit -m "Update test.txt"
+    - name: Commit changes
+      run: |          
           git push            
