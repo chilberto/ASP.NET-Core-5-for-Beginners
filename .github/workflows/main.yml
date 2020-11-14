@@ -37,6 +37,7 @@ jobs:
           git config --global user.email "chilberto@yahoo.com"
           
           git checkout -b pages
+          git pull
     
     - name: clear
       continue-on-error: true
