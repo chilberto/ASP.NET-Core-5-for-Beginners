@@ -33,6 +33,7 @@ jobs:
         ref: gh-pages
     
     - name: clear
+      continue-on-error: true
       run: |
           git config --global user.name "Jeff Chilberto"
           git config --global user.email "chilberto@yahoo.com"
