@@ -1,12 +1,10 @@
-name: DeployToGitHubPages
-env:
-  PUBLISH_DIR: './Chapter 12/Chapter_12_GitHubActions_Examples/bin/Release/net5.0/publish/wwwroot'
+name: Build and Deploy ASP .NET Core Chapter 12 to GitHub Pages
 
 on:
   push:
     branches: [ master ]    
     paths: 
-#    - './Chapter 12/Chapter_12_GitHubActions_Examples/**'
+    - 'Chapter 12/**'
 
 jobs:
   build:
@@ -18,8 +16,7 @@ jobs:
       with:
         dotnet-version: '5.0'
     - name: Publish app
-      run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'  
-    
+      run: dotnet publish -c Release './Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj'      
     - name: Save artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -31,27 +28,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: checkout branch
       continue-on-error: true
       run: |
           git config --global user.name "Jeff Chilberto"
-          git config --global user.email "chilberto@yahoo.com"
-                    
+          git config --global user.email "chilberto@yahoo.com"                    
           git checkout -B pages
-#          git reset --hard origin/
-#          git clean -d --force
-    
-    - name: clear
+          
+    - name: Clear pages branch
       continue-on-error: true
       run: |          
           git rm -rf . 
           git commit --allow-empty -m "root commit" 
-          git push -f origin pages
-              
-    - name: Download a single artifact
+          git push -f origin pages              
+    - name: Download build artifact
       uses: actions/download-artifact@v2
       with:
-        name: myWASM
+        name: myWASM        
         
     - name: Commit changes
       run: | 
